@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gift Box</title>
+    <link rel="stylesheet" href="loc.css">
+</head>
+
+<body>
+    <div class="container">
+        <!-- Final Images (Initially Hidden) -->
+        <div class="final-container" id="finalContainer" style="display: none;">
+            <img src="simp.webp" alt="Left Image" class="left-image">
+            <div class="main-image"></div> <!-- Holds beluga.jpg -->
+            <img src="lomp.webp" alt="Right Image" class="right-image">
+        </div>
+
+        <!-- Gift Animation GIF -->
+        <img src="finger-heart-bts.gif" alt="Gift Animation" class="gift-gif" id="giftGif">
+
+        <!-- "Open the box" Message -->
+        <label for="click" class="open-box-message" id="openBoxText">CLICK ON THE LID</label>
+
+        <!-- Gift Box -->
+        <div class="gift" id="giftBox">
+            <input type="checkbox" id="click" onclick="showBeluga();">
+            <label for="click" class="click"></label>
+            <div class="tape"></div>
+            <div class="shadow"></div>
+        </div>
+
+        <!-- Message Box (Initially Hidden) -->
+        <div class="message-box" id="messageBox" style="display: none;" onclick="showGif()">
+            Click for a Surprise!
+        </div>
+
+        <!-- Surprise GIF (Initially Hidden) -->
+        <img src="her.jpg" alt="Surprise GIF" id="surpriseGif" style="display: none;">
+    </div>
+
+    <audio id="bgMusic" loop>
+        <source src="fm-freemusic-cheerful-whistling(chosic.com).mp3" type="audio/mp4">
+        Your browser does not support the audio element.
+    </audio>
+
+    <!-- New background music for the "her image" page -->
+    <audio id="herMusic" loop>
+        <source src="i-wanna-be-yours-artic-monke-63563.mp3" type="audio/mp4">
+        Your browser does not support the audio element.
+    </audio>
+
+    <script>
+        function showBeluga() {
+            document.body.style.background = "#3d3d3d";
+            document.getElementById("finalContainer").style.display = "flex"; // Show final images
+            document.getElementById("giftGif").style.display = "none"; // Hide the gift animation
+            document.getElementById("openBoxText").style.display = "none"; // Hide the "Open the box" text
+            document.getElementById("messageBox").style.display = "block"; // Show message box
+            document.getElementById("bgMusic").play();
+            document.getElementById("giftBox").style.display = 'none'; // Completely remove the gift box after clicking
+        }
+
+        function showGif() {
+            document.getElementById("surpriseGif").style.display = "block"; // Show surprise gif
+            document.getElementById("messageBox").style.display = "none"; // Hide message box
+            document.getElementById("finalContainer").style.display = "none"; // Hide the Beluga image and the left/right images
+            document.getElementById("openBoxText").style.display = "none"; // Hide "Open the box" text
+            document.getElementById("bgMusic").pause(); // Stop the previous music
+            document.getElementById("herMusic").play(); // Play new music for the her image page
+        }
+    </script>
+</body>
+
+</html>
